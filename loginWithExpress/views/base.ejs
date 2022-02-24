@@ -1,0 +1,23 @@
+<!-- importing header  -->
+<%-include('header') -%>
+
+<div class="text-center center-div" id="login">
+    <div class="container w-25 border py-5">
+        <div class="title pb-5">
+            <h2 class="font-weight-bold">Login System</h2>
+            <span>Login fro existing User</span>
+        </div>
+        <form action="/route/login" method="POST" pt-3>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="email" class="form-control" id="">
+                <small class="form-text text-muted text-left">Register email address</small>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="password" id="">
+            </div>
+            <button type="submit" class="btn btn-success rounded-pill">Submit</button>
+        </form>
+    </div>
+</div>
+
+<%-include('footer') -%>
