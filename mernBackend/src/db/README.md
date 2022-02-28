@@ -105,3 +105,41 @@ add
 
     16) # Drop index 
     de.databaseName.dropIndex("databaseName")
+
+
+# reading data from DB
+    // reading a documents from database 
+    const getDocument =  async () => {
+        try {
+            // const result = await model.find({age:24}); // this will return all the documents that have age as 24
+            // const result = await model.find({age:24}).select({name:1}); // this will return all the documents that have age as 24 and only name and age
+            const result = await model.find({age:24}).select({name:1, _id:1}).limit(3); // this will return all the documents that have age as 24 and only name and age and limit the number of documents to 3
+            console.log(result);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+<!-- calling a function -->
+getDocument();
+
+
+# logical operator in MongoDB
+1) $and
+2) $not
+3) $nor
+4   ) $or
+const filterDate = async () =>{
+     try{
+       const result = await model.find({$nor : [{age:24},{email:'example@gmail.com'}]}).select({name:1, _id:1}); //  that is true if and only if both operands are false
+         console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+
+// calling a function 
+filterDate()
+
+
+
+# Sorting and Count Query Methods using Mongoos

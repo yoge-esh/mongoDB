@@ -96,4 +96,124 @@ const createStudents = async () => {
 
 
 // calling a function
-createStudents();
+// createStudents();
+
+
+// reading a documents from database 
+const limitDocument =  async () => {
+    try {
+        // const result = await model.find({age:24}); // this will return all the documents that have age as 24
+        // const result = await model.find({age:24}).select({name:1}); // this will return all the documents that have age as 24 and only name and age
+        const result = await model.find({age:24}).select({name:1, _id:1}).limit(3); // this will return all the documents that have age as 24 and only name and age and limit the number of documents to 3
+        console.log(result);
+    } catch (err) {
+        console.log(err);
+    }
+}
+// calling a function
+// limitDocument();
+
+
+
+// logical operation in mongoose
+// or logical operation
+const orFilterDate = async () =>{
+    try{
+        const result = await model.find({$or : [{age:24},{email:'example@gmail.com'}]}).select({name:1, _id:1});
+        console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+
+// // calling a function 
+// orFilterDate()
+
+
+
+// and logical operation
+const andFilterDate = async () =>{
+    try{
+        const result = await model.find({$and : [{age:24},{email:'example@gmail.com'}]}).select({name:1, _id:1});
+        console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+
+// // calling a function 
+// andFilterDate()
+
+
+
+// not logical operation
+const notFilterDate = async () =>{
+    try{
+        const result = await model.find({$not : [{age:24},{email:'example@gmail.com'}]}).select({name:1, _id:1}); // except this value we will get all other 10 documents
+        console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+
+// // calling a function 
+// notFilterDate()
+
+
+// not logical operation
+const norFilterDate = async () =>{
+    try{
+        const result = await model.find({$nor : [{age:24},{email:'example@gmail.com'}]}).select({name:1, _id:1}); //  that is true if and only if both operands are false
+        console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+
+// // calling a function 
+// norFilterDate()
+
+
+
+
+
+// Sorting and Count Query Methods using Mongoos
+// counting the number of documents in the database
+
+const countDate = async () =>{
+    try{
+        const result = await model.find(
+            {$nor : [{age:24},{email:'example@gmail.com'}]})
+            .select({name:1, _id:1}) //  that is true if and only if both operands are false
+            .count(); // this will return the number of documents in the database
+            console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+
+// calling a function 
+// countDate()
+
+
+
+// sorting the documents
+const sortDate = async () =>{
+    try{
+        const result = await model.find(
+            {$nor : [{age:24},{email:'example@gmail.com'}]})
+            .select({name:1, _id:1}) //  that is true if and only if both operands are false
+            .sort({name:1}); // this will sort the documents in ascending order
+            console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+
+// calling the function 
+// sortDate()  // this will sort the documents in ascending order
+
+
+
+
+// updates the documents useing mongo
