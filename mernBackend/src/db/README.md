@@ -143,3 +143,91 @@ filterDate()
 
 
 # Sorting and Count Query Methods using Mongoos
+// sorting the documents
+const sortDate = async () =>{
+    try{
+        const result = await model.find(
+            {$nor : [{age:24},{email:'example@gmail.com'}]})
+            .select({name:1, _id:1}) //  that is true if and only if both operands are false
+            .sort({name:1}); // this will sort the documents in ascending order
+            console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+
+// calling the function 
+// sortDate()  // this will sort the documents in ascending order
+
+
+const countDate = async () =>{
+    try{
+        const result = await model.find(
+            {$nor : [{age:24},{email:'example@gmail.com'}]})
+            .select({name:1, _id:1}) //  that is true if and only if both operands are false
+            .count(); // this will return the number of documents in the database
+            console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+
+// calling a function 
+// countDate()
+
+
+
+# update the value in database 
+# first - while updating the value it will show the previous value which is in data base not which we have just updated 
+// update which will show an data which we have updated in the database
+const updateDocument = async (_id) =>{
+    try{
+        const result = await model.findByIdAndUpdate({_id},{$set:{name:'Prabin Balak'}}); 
+        console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+updateDocument("621b435b902287f059092088");
+
+
+# next method 
+// updates the documents useing mongo
+
+// const updateDocument = async (_id) =>{
+//     try{
+//         const result = await model.updateOne({_id},{$set:{name:'Prabin Balak'}}); 
+//         console.log(result);
+//     }catch(err){
+//         console.log(err);
+//     }
+// }
+// updateDocument("621b435b902287f059092088");
+
+
+
+# getting a currently updated value in result 
+// getting an updated value in result 
+const updateDocument = async (_id) =>{
+    try{
+        const result = await model.findByIdAndUpdate({_id},{$set:{name:'Prabin Balak'}},
+        {new:true}); // this will return the updated value
+        console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+updateDocument("621b435b902287f059092088");
+
+
+
+# deleting the document form database 
+const deleteDocument = async (_id) =>{
+    try{
+        const result = await model.findByIdAndDelete({_id});
+        console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+deleteDocument("621b4b4bb844a55f32a02678");

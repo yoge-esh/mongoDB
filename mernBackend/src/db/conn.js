@@ -217,3 +217,53 @@ const sortDate = async () =>{
 
 
 // updates the documents useing mongo
+
+// const updateDocument = async (_id) =>{
+//     try{
+//         const result = await model.updateOne({_id},{$set:{name:'Prabin Balak'}}); 
+//         console.log(result);
+//     }catch(err){
+//         console.log(err);
+//     }
+// }
+// updateDocument("621b435b902287f059092088");
+
+
+
+// update which will show an data which we have updated in the database
+// const updateDocument = async (_id) =>{
+//     try{
+//         const result = await model.findByIdAndUpdate({_id},{$set:{name:'Prabin Balak DOCSF'}}); 
+//         console.log(result);
+//     }catch(err){
+//         console.log(err);
+//     }
+// }
+// updateDocument("621b435b902287f059092088");
+
+
+
+// getting an updated value in result 
+const updateDocument = async (_id) =>{
+    try{
+        const result = await model.findByIdAndUpdate({_id},{$set:{name:'Prabin Balak'}},
+        {new:true}); // this will return the updated value
+        console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+// updateDocument("621b435b902287f059092088");
+
+
+
+// deleting a document from the database
+const deleteDocument = async (_id) =>{
+    try{
+        const result = await model.findByIdAndDelete({_id});
+        console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+deleteDocument("621b4b4bb844a55f32a02678");
