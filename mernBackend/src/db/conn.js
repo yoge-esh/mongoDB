@@ -266,4 +266,21 @@ const deleteDocument = async (_id) =>{
         console.log(err);
     }
 }
-deleteDocument("621b4b4bb844a55f32a02678");
+// deleteDocument("621b4b4bb844a55f32a02678");
+
+
+
+// builten validation in monogose
+const validateDocument = async () =>{
+    try{
+        const result = await model.create({
+            name: 'Prabin',
+            age: 24,
+            email: 'example@gmail.com'
+        });
+        console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+}
+validateDocument();

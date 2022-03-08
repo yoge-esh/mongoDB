@@ -13,7 +13,7 @@ class signupController {
         let avatarUrl = req.body.avatarUrl;
         let gender = req.body.textGender;
 
-        const url = "mongodb://localhost:27017";
+        const url = "mongodb://localhost:27017/signupUser";
         const client = new MongoClient(url);
         // database Name 
         const dbName = 'eCommerceProject';
@@ -54,7 +54,7 @@ class signupController {
         let avatarUrl = req.body.txtAvatarUrl;
         let gender = req.body.txtGender;
 
-        const url = "mongodb://localhost:27017";
+        const url = "mongodb://localhost:27017/signupCustomer";
         const client = new MongoClient(url);
         // database name 
         const dbName = 'eCommerceProject';
