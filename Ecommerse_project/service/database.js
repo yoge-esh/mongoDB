@@ -1,17 +1,16 @@
-import {MongoClient} from 'mongodb';
+import mongoose from "mongoose";
 
-// connection URL
-const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url);
-
-// database name
-const dbName = 'eCommerceProject';
-let db;
-async function initConnection() {
-    await client.connect();
-    console.log('Connected successfully to server');
-    db = client.db(dbName);
+function connectDB(params) {
+  mongoose
+    .connect("mongodb://127.0.0.1:27017/eCommerceProject", {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    })
+    .then(() => {
+      console.log("database connected");
+    })
+    .catch((err) => {
+      console.log("database connection unsuccessful", err);
+    });
 }
-
-export const connection = initConnection;
-export const database = db;
+export default connectDB;
