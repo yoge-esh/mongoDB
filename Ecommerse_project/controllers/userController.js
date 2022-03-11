@@ -1,4 +1,4 @@
-import User from "../modules/user.js";
+import User from "../models/user.js";
 
 class UserController {
   showAllUser(req, res) {

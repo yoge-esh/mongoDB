@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import User from "../modules/user.js";
+import User from "../models/user.js";
 import jsonwebtoken from "jsonwebtoken";
 import "dotenv/config";
 
@@ -56,6 +56,7 @@ class AuthController {
             (err, token) => {
               if (err) console.log(err);
               data.authTokens.push({ token: token });
+              res.cookie("token", token);
               res.status(200).redirect("/index");
             }
           );
