@@ -32,6 +32,7 @@ class ProductController {
       discount,
       status,
       shortDescription,
+      categotySelect,
       slug
     } = req.body;
     const product = new Product({
@@ -44,7 +45,8 @@ class ProductController {
       discount,
       status,
       shortDescription,
-      slug
+      slug,
+      category: categotySelect,
     });
     product
       .save()
